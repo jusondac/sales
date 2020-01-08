@@ -13,10 +13,14 @@
     <div class="navbar navbar-expand-sm bg-dark navbar-dark" role="navigation">   
        <div class="container">   
          <span style="color:grey"><h4>Sale</h4></span>   
-         <ul class="nav navbar-nav">  
+         <ul class="nav navbar-nav">
+         <% if user_signed_in? %>  
            <%= link_to "all sales",sales_path, :class => "nav-link" %>  
            <%= link_to "all product",products_path, :class => "nav-link" %>  
-           <%= link_to "All Activities", activities_path, :class => "nav-link" %> 
+           <% if can? :manage, Product %>
+             <%= link_to "All Activities", activities_path, :class => "nav-link" %> 
+           <% end %>
+        <% end %>
          </ul>   
          <ul class="nav navbar-nav navbar-right">   
             <% if user_signed_in? %>   
