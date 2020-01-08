@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sales</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body style="font-family: consolas">
+    <div class="navbar navbar-expand-sm bg-dark navbar-dark" role="navigation">   
+       <div class="container">   
+         <span style="color:grey"><h4>Sale</h4></span>   
+         <ul class="nav navbar-nav">  
+           <%= link_to "all sales",sales_path, :class => "nav-link" %>  
+           <%= link_to "all product",products_path, :class => "nav-link" %>  
+           <%= link_to "All Activities", activities_path, :class => "nav-link" %> 
+         </ul>   
+         <ul class="nav navbar-nav navbar-right">   
+            <% if user_signed_in? %>   
+            <li><%= link_to current_user.email, edit_user_registration_path, :class => "nav-link" %></li>   
+            <li><%= link_to "Log Out" , destroy_user_session_path, method: :delete, :class => "nav-link" %></li>   
+            <% else %>   
+            <li><%= link_to "Sign In", user_session_path, :class => "nav-link" %></li>   
+            <li><%= link_to "Register", new_user_registration_path, :class => "nav-link" %></li>   
+            <% end %>   
+         </ul>   
+       </div>   
+    </div>   
+    <div class="container">   
+       <% flash.each do |type, message| %>   
+       <div class="alert <%= flash_class type %> alert-dismissable">   
+         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>   
+         <p><%= message %></p>   
+       </div>   
+       <% end %>   
+       <%= yield %>   
+    </div>   
+  </body>
+</html>
