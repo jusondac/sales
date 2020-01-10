@@ -1,0 +1,28 @@
+
+
+
+<div style="padding-top: 90px">
+	<table>
+		<thread>
+			<tr>
+				<th>Email </th>
+				<th>Access as</th>
+			</tr>		
+		</thread>
+		<tbody class="table table-striped">
+			<%= form_tag master_path(@master), :method => :put do |f| %>
+			<tr>
+				<td><%= text_field_tag :email, @master.email, :readonly => "readonly" %></td>
+				<td><%= select_tag "role", options_from_collection_for_select(Role.all,'id','name') %></td>
+				<td>
+					<div class="actions">
+				    	<%= submit_tag "save"%>
+	  				</div>				
+				</td>
+			</tr>
+
+	<% end %>		
+		</tbody>
+	</table>
+</div>
+<%= link_to 'Back', masters_path %>

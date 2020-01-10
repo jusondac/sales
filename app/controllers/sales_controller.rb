@@ -26,8 +26,8 @@ class SalesController < ApplicationController
   # POST /sales.json
   def create
     @sale = Sale.new(sale_params)
-     @sale.user_id = current_user.id #tambahkan ini setelah code di atas  
-     @sale.total = @sale.total_all #tambahkan ini setelah code di atas  
+    @sale.user_id = current_user.id #tambahkan ini setelah code di atas  
+    @sale.total = @sale.total_all #tambahkan ini setelah code di atas  
     respond_to do |format|
       if @sale.save
         format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
@@ -38,7 +38,6 @@ class SalesController < ApplicationController
       end
     end
   end
-
   # PATCH/PUT /sales/1
   # PATCH/PUT /sales/1.json
   def update

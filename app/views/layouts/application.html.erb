@@ -20,6 +20,9 @@
            <% if can? :manage, Product %>
              <%= link_to "All Activities", activities_path, :class => "nav-link" %> 
            <% end %>
+           <% if can? :manage, :all%>
+            <%= link_to "master",  masters_path ,:class => "nav-link"%>
+           <%  end %>
         <% end %>
          </ul>   
          <ul class="nav navbar-nav navbar-right">   
@@ -34,12 +37,6 @@
        </div>   
     </div>   
     <div class="container">   
-       <% flash.each do |type, message| %>   
-       <div class="alert <%= flash_class type %> alert-dismissable">   
-         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>   
-         <p><%= message %></p>   
-       </div>   
-       <% end %>   
        <%= yield %>   
     </div>   
   </body>

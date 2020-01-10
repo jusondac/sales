@@ -18,16 +18,16 @@
    <% @sale.items.each do |item| %>  
     <tr>  
      <td><%= item.product.name %></td>  
-     <td><%= item.product.price %></td>  
+     <td>Rp. <%= number_with_delimiter(item.product.price,:delimiter => ",", :separator => ".") %></td>  
      <td><%= item.quantity %></td>  
-     <td><%= item.total %></td>  
+     <td>Rp. <%= number_with_delimiter(item.total,:delimiter => ",", :separator => ".") %></td>  
     </tr>  
    <% end %>  
   </tbody>  
  </table>  
  <hr>  
   <p> Total </p>  
-  <%= @sale.total%>  
+  Rp. <%= number_with_delimiter(@sale.total,:delimiter => ',',:separator => ".") %>  
  <hr>  
 
 <%= link_to 'Edit', edit_sale_path(@sale) %> |
